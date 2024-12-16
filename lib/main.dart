@@ -4,6 +4,7 @@ void main() {
   runApp(const MyApp());
 }
 
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -17,8 +18,12 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(
               seedColor: const Color.fromARGB(255, 255, 0, 0))),
       home: Scaffold(
-        appBar: AppBar(centerTitle: true,
-          title: Image.asset('assets/images/unnamed.png',height: 100,),
+        appBar: AppBar(
+          centerTitle: true,
+          title: Image.asset(
+            'assets/images/unnamed.png',
+            height: 100,
+          ),
           leading: IconButton(
               icon: const Icon(Icons.menu),
               onPressed: () {
@@ -29,7 +34,7 @@ class MyApp extends StatelessWidget {
           // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              "assets/images/unnamed.png",
+              "assets/images/charge.png",
               height: 250,
             ),
             const Text(
@@ -46,25 +51,26 @@ class MyApp extends StatelessWidget {
               children: [
                 const Text('สรุปรายละเอียดการชาร์จ',
                     style:
-                    TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                        TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
               ],
             ),
             SizedBox(height: 10),
             const Row(
               children: [
                 Icon(Icons.calendar_month),
+                // Padding(
+                //   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                 Text(
                   ' วันที่ชาร์จ',
                   style: TextStyle(
                     fontSize: 18,
                   ),
+                  //),
                 ),
                 Spacer(),
                 Text(
                   '9 กันยายน 2566',
-                  style: TextStyle(
-                      fontSize: 18,fontWeight: FontWeight.bold
-                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -78,12 +84,14 @@ class MyApp extends StatelessWidget {
                     fontSize: 18,
                   ),
                 ),
+                // Card(
+                //   color: Colors.blue,
+                //   child: Text("ssss"),
+                // ),
                 Spacer(),
                 Text(
                   'Pea Volta กรุงเทพ',
-                  style: TextStyle(
-                      fontSize: 18,fontWeight: FontWeight.bold
-                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -100,9 +108,7 @@ class MyApp extends StatelessWidget {
                 Spacer(),
                 Text(
                   'CCS2',
-                  style: TextStyle(
-                      fontSize: 18,fontWeight: FontWeight.bold
-                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -119,9 +125,7 @@ class MyApp extends StatelessWidget {
                 Spacer(),
                 Text(
                   '00:12:32',
-                  style: TextStyle(
-                      fontSize: 18,fontWeight: FontWeight.bold
-                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -138,17 +142,23 @@ class MyApp extends StatelessWidget {
                 Spacer(),
                 Text(
                   '9.314 KWh',
-                  style: TextStyle(
-                      fontSize: 18,fontWeight: FontWeight.bold
-                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
-
-
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
+              onPressed: () {},
+              child: Text('สรุปค่าใช้จ่าย',style: TextStyle(color: Colors.black),),
+            ),
+            // const Expanded(
+            //   child: Text(
+            //     'ขอบคุณที่ใช้บริการ',
+            //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            //   ),
+            // )
           ],
         ),
-
 
         // body: const Column(
         //   children: [
@@ -157,7 +167,7 @@ class MyApp extends StatelessWidget {
         //     Text('My mobile app',
         //         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
         //   ],
-        // ),
+        // )
       ),
     );
   }
