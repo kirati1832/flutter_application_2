@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/PageForm.dart';
 import 'package:flutter_application_2/about_page.dart';
 import 'package:flutter_application_2/about_page2.dart';
 
@@ -19,9 +20,15 @@ class MyApp extends StatelessWidget {
           appBarTheme: const AppBarTheme(color: Color.fromARGB(255, 86, 1, 88)),
           colorScheme: ColorScheme.fromSeed(
           seedColor: const Color.fromARGB(255, 255, 0, 0))),
+          initialRoute: '/',
+          routes: {
+            '/':(context) => AboutPage2(),
+            '/page2':(context) => AboutPage(Name:'',),
+            '/Form':(context) => PageForm(),
+          },
           //home:  const AboutPage(), 
-          
-          home: const AboutPage2(),
+          //home: const AboutPage2(),
+
     );
   }
 }

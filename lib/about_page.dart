@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/about_page2.dart';
+import 'package:flutter_application_2/PageForm.dart';
 
 class AboutPage extends StatefulWidget {
-  const AboutPage({super.key});
+  final String? Name; //?จะส่งหรือไม่ส่งก็ได้ถ้า
+  const AboutPage({super.key,required this.Name});
 
   @override
   State<AboutPage> createState() => _AboutPageState();
@@ -11,6 +13,7 @@ class AboutPage extends StatefulWidget {
 class _AboutPageState extends State<AboutPage> {
   @override
   double _output = 0;
+
   final TextEditingController _volt = TextEditingController();
   Widget build(BuildContext context) {
     return Scaffold(
@@ -152,6 +155,10 @@ class _AboutPageState extends State<AboutPage> {
               Text(' บาท/หน่วย',style: TextStyle(fontSize: 20),),
             ],
           ),
+          Row(mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('${widget.Name}',style: TextStyle(fontSize: 20),),
+          ],),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
             onPressed: () {
@@ -163,8 +170,25 @@ class _AboutPageState extends State<AboutPage> {
               //   MaterialPageRoute(builder: (context) => const AboutPage2()),
               // );
             },
-            child: Text(
+            child: const Text(
               'สรุปค่าใช้จ่าย',
+              style: TextStyle(color: Colors.black),
+            ),
+          ),
+
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
+            onPressed: () {
+              // setState(() {
+              //   double input = double.parse(_volt.text);
+              //   _output = input * 3;
+              // });
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const PageForm()),
+              );
+            },
+            child: const Text(
+              'ไปหน้าแบบฟอร์ม',
               style: TextStyle(color: Colors.black),
             ),
           ),

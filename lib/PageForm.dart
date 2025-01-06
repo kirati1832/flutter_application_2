@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/about_page.dart';
+import 'package:flutter_application_2/about_page2.dart';
 
-class AboutPage2 extends StatefulWidget {
-  const AboutPage2({super.key});
+class PageForm extends StatefulWidget {
+  const PageForm({super.key});
 
   @override
-  State<AboutPage2> createState() => _MyWidgetState();
+  State<PageForm> createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends State<AboutPage2> {
+class _MyWidgetState extends State<PageForm> {
   String _output = "";
   final _textController = TextEditingController();
+  String input = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,9 +23,9 @@ class _MyWidgetState extends State<AboutPage2> {
           height: 100,
         ),
         leading: IconButton(
-            icon: const Icon(Icons.menu),
+            icon: const Icon(Icons.home),
             onPressed: () {
-              debugPrint('leading icon');
+                Navigator.pushNamed(context, '/page2');
             }),
       ),
       body: Center(
@@ -32,33 +34,33 @@ class _MyWidgetState extends State<AboutPage2> {
           child: Column(
             children: [
               SizedBox(height: 10),
-              const SizedBox(
+              SizedBox(
                 width: 250,
               child: TextField(
-                //controller: _textController,
-                decoration: InputDecoration(hintText: 'Enter Email',labelText: 'Email',border: OutlineInputBorder()),
+                controller: _textController,
+                decoration: const InputDecoration(hintText: 'Name',labelText: 'Name',border: OutlineInputBorder()),
                 
               ),),
               SizedBox(height: 10),
               const SizedBox(
                 width: 250,
               child: TextField(
-                obscureText: true,
+                //obscureText: true,
                 //controller: _textController,
-                decoration: InputDecoration(hintText: 'Enter Password',labelText: 'Password',border: OutlineInputBorder()),
+                decoration: InputDecoration(hintText: 'NickName',labelText: 'NickName',border: OutlineInputBorder()),
                 
               ),),
           //Text("$_output"), 
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
             onPressed: () {
-              String input = _textController.text;
+              input  =_textController.text;
               // setState(() {
               //   _output = 'Hi, $input Good Job';
               // });
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const AboutPage(Name: '',)),
-              ); (Route) => false;
+                MaterialPageRoute(builder: (context) => AboutPage(Name:input,)),
+              );
             },
             child: const Text(
               'ยืนยัน',
