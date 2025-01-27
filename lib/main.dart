@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_2/PageForm.dart';
 import 'package:flutter_application_2/about_page.dart';
 import 'package:flutter_application_2/about_page2.dart';
+import 'package:flutter_application_2/ListPage.dart';
+import 'package:flutter_application_2/my_futurebuilder_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +27,8 @@ class MyApp extends StatelessWidget {
             '/':(context) => AboutPage2(),
             '/page2':(context) => AboutPage(Name:'',),
             '/Form':(context) => PageForm(),
+            '/List':(context) => ListPage(),
+            '/Future':(context) => MyFutureBuilderPage(),
           },
           //home:  const AboutPage(), 
           //home: const AboutPage2(),
