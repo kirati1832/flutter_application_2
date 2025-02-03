@@ -203,7 +203,7 @@ class _AboutPageState extends State<AboutPage> {
               //   _output = input * 3;
               // });
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const Basichttp()),
+                MaterialPageRoute(builder: (context) => const HttpBasic()),
               );
             },
             child: const Text(

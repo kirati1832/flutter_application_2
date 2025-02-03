@@ -1,43 +1,46 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/PageForm.dart';
-import 'package:flutter_application_2/about_page.dart';
-import 'package:flutter_application_2/about_page2.dart';
-import 'package:flutter_application_2/ListPage.dart';
+import 'package:http/http.dart' as http;
 
-class Basichttp extends StatefulWidget {
-  const Basichttp({super.key});
+Future<String> fetchData() async {
+  final response =
+      await http.get(Uri.parse('https://itpart.net/mobile/api/product1.php'));
+  if (response.statusCode == 200) {
+    final jSONbody = jsonDecode(utf8.decode(response.bodyBytes));
+    String strBody = response.body.toString();
+    debugPrint(strBody);
 
-  @override
-  State<Basichttp> createState() => _MyWidgetState();
+    return strBody;
+  } else {
+    throw Exception('problem . .');
+  }
 }
 
-class _MyWidgetState extends State<Basichttp> {
-  // Simulating an asynchronous operation that returns a Future
-  Future<String> fetchData() async {
-    await Future.delayed(const Duration(seconds: 3));
-    return "Hello, FutureBuilder!";
-  }
+class HttpBasic extends StatefulWidget {
+  const HttpBasic({super.key});
 
+  @override
+  State<HttpBasic> createState() => _HttpBasicState();
+}
+
+class _HttpBasicState extends State<HttpBasic> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.amberAccent,
-          title: const Text('FutureBuilder Page'),
-        ),
-        body: Center(
-          child: FutureBuilder(
-            future: fetchData(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Text('Result: ${snapshot.data}',
-                    style: TextStyle(fontSize: 20));
-              } else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
-              }
-              return const CircularProgressIndicator();
-            },
-          ),
-        ));
+      appBar: AppBar(title: Text('HttpBasic Page')),
+      body: FutureBuilder(future: fetchData(), builder: (context , asd){
+        if (asd.connectionState == ConnectionState.waiting){
+          return CircularProgressIndicator();
+        }
+        else if (asd.hasData){
+          return Text('${asd.data}');
+        }
+        else if (asd.hasError){
+          return Text('${asd.hasError}');
+        }
+        return Text('No data available');
+      })
+      );
   }
 }
